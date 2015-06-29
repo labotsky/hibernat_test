@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.simple.entity.Info" table="Info">
+        <meta attribute="class-description">
+            This class contains the Info detail.
+        </meta>
+        <id name="infoId" type="long" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="information" column="information" type="string"/>
+    </class>
+</hibernate-mapping>

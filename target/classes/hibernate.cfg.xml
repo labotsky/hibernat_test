@@ -13,7 +13,7 @@
 
         <property name="show_sql">true</property>
 
-        <property name="format_sql">false</property>
+        <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">create-drop</property>
 
         <!-- JDBC connection pool (use the built-in) -->
@@ -23,6 +23,7 @@
         <mapping resource="com/entity/Department.hbm.xml"/>
         <mapping resource="com/entity/Info.hbm.xml"/>
         <mapping resource="com/entity/Person.hbm.xml"/>
+        <mapping resource="com/entity/Category.hbm.xml"/>
 
         <!-- <mapping resource="com/mkyong/user/DBUser.hbm.xml"></mapping> -->
     </session-factory>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.simple.entity.Category" table="Category">
+        <id name="categoryId" type="java.lang.Long" column="id">
+            <generator class="native"/>
+        </id>
+        <set name="infos" table="info_category" inverse="false" lazy="true" fetch="select" cascade="all">
+            <key>
+                <column name="categoryId" not-null="true"/>
+            </key>
+            <many-to-many entity-name="com.simple.entity.Info">
+                <column name="infoId" not-null="true"/>
+            </many-to-many>
+        </set>
+        <property name="name" column="name" type="java.lang.String"/>
+        <property name="description" column="description" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>

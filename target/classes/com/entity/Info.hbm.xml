@@ -9,5 +9,13 @@
             <generator class="native"/>
         </id>
         <property name="information" column="information" type="java.lang.String"/>
+        <set name="categories" table="info_category" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="infoId" not-null="true"/>
+            </key>
+            <many-to-many entity-name="com.simple.entity.Category">
+                <column name="categoryId" not-null="true"/>
+            </many-to-many>
+        </set>
     </class>
 </hibernate-mapping>

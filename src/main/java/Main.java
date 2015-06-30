@@ -1,11 +1,10 @@
-import com.simple.entity.Department;
-import com.simple.entity.Employee;
-import com.simple.entity.Info;
-import com.simple.entity.Person;
+import com.simple.entity.*;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
 
@@ -23,11 +22,34 @@ public class Main {
         Info info2 = new Info();
         info2.setInformation("Information2");
 
+        Set<Info> infos = new HashSet<Info>();
+        infos.add(info1);
+        infos.add(info2);
+
+
         person.setInfo(info1);
 
         employee.setInfo(info2);
 
         employee.setInfo(info2);
+
+        Category c1 = new Category();
+        c1.setName("Cat1");
+        c1.setDescription("cat1 descr");
+
+        Category c2 = new Category();
+        c2.setName("Cat2");
+        c2.setDescription("cat2 descr");
+
+        Set<Category> categories = new HashSet<Category>();
+        categories.add(c1);
+        categories.add(c2);
+
+        info2.getCategories().add(c1);
+        c2.getInfos().add(info1);
+
+        session.save(c1);
+        session.save(c2);
 
         Department d1 = new Department();
         d1.setDepartmentName("Sales");
@@ -45,11 +67,6 @@ public class Main {
         session.save(d1);
 
         session.getTransaction().commit();
-
-        Department d = (Department) session.get(Department.class, 1L);
-        for(Person p : d.getPersons()){
-            System.out.println(p.getDepartment().getDepartmentName());
-        }
         session.close();
     }
 }

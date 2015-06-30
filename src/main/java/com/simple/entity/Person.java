@@ -1,33 +1,15 @@
 package com.simple.entity;
 
-import javax.persistence.*;
-
-/**
- * Created by Сергей on 27.06.2015.
- */
-
-@Entity
-@Table(name = "person")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-        name = "discriminator",
-        discriminatorType = DiscriminatorType.STRING
-)
-@DiscriminatorValue(value = "P")
 public class Person {
-    @Id
-    @GeneratedValue
-    @Column(name = "person_id")
+
     private Long personId;
-    @Column(name = "firstname")
+
     private String firstname;
-    @Column(name = "lastname")
+
     private String lastname;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "info_id")
+
     private Info info;
-    @ManyToOne
-    @JoinColumn(name = "department_id")
+
     private Department department;
 
     public Person(String firstname, String lastname) {

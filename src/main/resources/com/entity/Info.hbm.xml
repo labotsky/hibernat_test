@@ -5,12 +5,9 @@
 
 <hibernate-mapping>
     <class name="com.simple.entity.Info" table="Info">
-        <meta attribute="class-description">
-            This class contains the Info detail.
-        </meta>
-        <id name="infoId" type="long" column="id">
+        <id name="infoId" type="java.lang.Long" column="id">
             <generator class="native"/>
         </id>
-        <property name="information" column="information" type="string"/>
+        <property name="information" column="information" type="java.lang.String"/>
     </class>
 </hibernate-mapping>

@@ -7,9 +7,6 @@ import org.hibernate.Session;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by Сергей on 27.06.2015.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -28,7 +25,9 @@ public class Main {
 
         person.setInfo(info1);
 
-        employee.setInfo(info1);
+        employee.setInfo(info2);
+
+        employee.setInfo(info2);
 
         Department d1 = new Department();
         d1.setDepartmentName("Sales");
@@ -47,6 +46,10 @@ public class Main {
 
         session.getTransaction().commit();
 
+        Department d = (Department) session.get(Department.class, 1L);
+        for(Person p : d.getPersons()){
+            System.out.println(p.getDepartment().getDepartmentName());
+        }
         session.close();
     }
 }

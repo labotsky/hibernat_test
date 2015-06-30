@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.simple.entity.Person" table="Person" discriminator-value="P">
+        <id name="personId" type="java.lang.Long" column="id">
+            <generator class="native"/>
+        </id>
+        <discriminator column="discriminator" type="java.lang.String" />
+        <many-to-one name="info" class="com.simple.entity.Info" column="info_id" not-null="true" cascade="all" unique="true" />
+        <many-to-one name="department" column="department_id"/>
+        <property name="firstname" column="firstname" type="java.lang.String"/>
+        <property name="lastname" column="lastname" type="java.lang.String"/>
+        <subclass name="com.simple.entity.Employee" discriminator-value="E">
+            <property name="departmentName" column="department_name" type="java.lang.String"/>
+            <property name="joiningDate" column="joining_date" type="java.util.Date"/>
+        </subclass>
+    </class>
+</hibernate-mapping>

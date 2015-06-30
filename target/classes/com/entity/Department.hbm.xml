@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.simple.entity.Department" table="Department">
+        <id name="departmentId" type="java.lang.Long" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="departmentName" column="dept_name" type="java.lang.String"/>
+        <bag name="persons" cascade="all" table="Person" inverse="false" lazy="false" fetch="select">
+            <key column="department_id"/>
+            <one-to-many class="com.simple.entity.Person"/>
+        </bag>
+    </class>
+</hibernate-mapping>
